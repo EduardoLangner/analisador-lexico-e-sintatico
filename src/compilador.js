@@ -1,5 +1,5 @@
 import { createLexer } from 'syntax-parser';
-import { createParser, chain, matchTokenType, many, optional } from 'syntax-parser';
+import { createParser, chain, matchTokenType, optional } from 'syntax-parser';
 import fs from 'fs';
 
 const myLexer = createLexer([ //Inicilização do analisador léxico e declaração de tokens 
@@ -214,17 +214,10 @@ const myParser = createParser(
   myLexer // Created in lexer example. 
 );
 
-// let linguagem = 'if (!2.9 == !-1  || 2.9 == -1) { if (!2.9 == !-1  || 2.9 == -1) { #comentario# } }' //true
-// let linguagem = 'float var teste2 = "teste2"; bool var teste3 = 1.4; if(var teste2 != var teste3){#testee#}' //true
-// let linguagem = 'int var teste4 = 10; int var teste5 = 20; for(var teste4 = 0; var teste4 <= 10; var teste4 ++){int var teste6 = "teste"; var teste4 = var teste5 + var teste6;}' //true
-// let linguagem = 'if (var teste2 != var teste3){#testee#} else {#testee#}' //true
-// let linguagem = 'int var teste = 10; if(var teste >= 10){int var teste2 = "teste";}else{int var teste3 = "teste";}' //true
-// let linguagem = 'int var teste = 10; for(var teste = 0; var teste <= 10; var teste ++){int var teste2 = "teste";}' //true
-
 let tokens = myParser(linguagem)
 
 console.log(myLexer(linguagem))
 console.log(tokens)
 
 // save tokens in a file and format it
-fs.writeFileSync('./tokens.json', JSON.stringify(tokens, null, 2))
+fs.writeFileSync('./tokens.json', JSON.stringify(tokens, null, 2))  
